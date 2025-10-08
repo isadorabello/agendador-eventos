@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -26,8 +27,17 @@ public class EventoService {
                 dto.dataEvento(), LocalDateTime.now(), dto.dataAlteracao(), dto.localizacao(), dto.linkChamada(), StatusEventoEnum.AGENDADO
         );
 
-        Evento evento = repository.save(mapper.paraEntity(eventoDTO));
-        return mapper.paraDTO(evento);
+        Evento evento = repository.save(mapper.paraEventoEntity(eventoDTO));
+        return mapper.paraEventoDTO(evento);
+    }
+
+    public List<EventoDTO> buscarEventoPorPeriodo(LocalDateTime dataInicial, LocalDateTime dataFinal){
+        return mapper.paraListaDTOs(repository.findByDataEventoBetween(dataInicial, dataFinal));
+    }
+
+    public List<EventoDTO> buscarEventoPorEmail(String token){
+        String email = jwtUtil.extrairEmailToken(token.substring(7));
+        return mapper.paraListaDTOs(repository.findByEmailUsuario(email));
     }
 
 }

@@ -17,13 +17,13 @@ public class Evento {
 
     @Id
     private String id;
+    private String titulo;
+    private String descricao;
     private String emailUsuario;
     private int maxParticipantes;
     private LocalDateTime dataEvento;
     private LocalDateTime dataCriacao;
     private LocalDateTime dataAlteracao;
-    private String titulo;
-    private String descricao;
     private String localizacao;
     private String linkChamada;
     private StatusEventoEnum status;
