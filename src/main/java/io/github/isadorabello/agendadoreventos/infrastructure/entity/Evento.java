@@ -24,5 +24,7 @@ public class Evento {
     private LocalDateTime dataAlteracao;
     private String titulo;
     private String descricao;
+    private String localizacao;
+    private String linkChamada;
     private StatusEventoEnum status;
 }

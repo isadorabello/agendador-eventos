@@ -12,5 +12,7 @@ public record EventoDTO(String id, String titulo, String descricao, String email
                         LocalDateTime dataCriacao,
                         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
                         LocalDateTime dataAlteracao,
+                        String localizacao,
+                        String linkChamada,
                         StatusEventoEnum status) {
 }
