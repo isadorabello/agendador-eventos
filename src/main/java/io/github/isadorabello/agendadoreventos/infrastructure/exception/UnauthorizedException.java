@@ -1,4 +1,4 @@
-package io.github.isadorabello.agendadoreventos.infrastructure.repository;
+package io.github.isadorabello.agendadoreventos.infrastructure.exception;
 
 import org.springframework.security.core.AuthenticationException;
 
