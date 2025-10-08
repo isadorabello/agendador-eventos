@@ -13,6 +13,7 @@ import static org.mapstruct.MappingConstants.ComponentModel.SPRING;
 public interface EventoMapper {
 
     @Mapping(source = "id", target = "id")
+    @Mapping(source = "dataAlteracao", target = "dataAlteracao")
     Evento paraEventoEntity(EventoDTO dto);
 
     EventoDTO paraEventoDTO(Evento entity);
