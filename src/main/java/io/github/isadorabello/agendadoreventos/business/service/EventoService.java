@@ -23,7 +23,7 @@ public class EventoService {
     public EventoDTO salvarEvento(EventoDTO dto, String token){
         String email = jwtUtil.extrairEmailToken(token.substring(7));
         EventoDTO eventoDTO = new EventoDTO(dto.id(), dto.titulo(), dto.descricao(), email,dto.maxParticipantes(),
-                dto.dataEvento(), LocalDateTime.now(), dto.dataAlteracao(), StatusEventoEnum.AGENDADO
+                dto.dataEvento(), LocalDateTime.now(), dto.dataAlteracao(), dto.localizacao(), dto.linkChamada(), StatusEventoEnum.AGENDADO
         );
 
         Evento evento = repository.save(mapper.paraEntity(eventoDTO));
