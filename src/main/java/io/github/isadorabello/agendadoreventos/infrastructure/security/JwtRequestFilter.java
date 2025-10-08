@@ -1,7 +1,7 @@
 package io.github.isadorabello.agendadoreventos.infrastructure.security;
 
-import io.github.isadorabello.agendadoreventos.infrastructure.repository.ResourceNotFoundException;
-import io.github.isadorabello.agendadoreventos.infrastructure.repository.UnauthorizedException;
+import io.github.isadorabello.agendadoreventos.infrastructure.exception.ResourceNotFoundException;
+import io.github.isadorabello.agendadoreventos.infrastructure.exception.UnauthorizedException;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import jakarta.servlet.FilterChain;

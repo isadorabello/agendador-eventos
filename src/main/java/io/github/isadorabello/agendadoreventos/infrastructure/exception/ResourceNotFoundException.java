@@ -1,4 +1,4 @@
-package io.github.isadorabello.agendadoreventos.infrastructure.repository;
+package io.github.isadorabello.agendadoreventos.infrastructure.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
   public ResourceNotFoundException(String mensagem){
