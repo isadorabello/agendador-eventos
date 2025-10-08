@@ -2,6 +2,7 @@ package io.github.isadorabello.agendadoreventos.controller;
 
 import io.github.isadorabello.agendadoreventos.business.dto.EventoDTO;
 import io.github.isadorabello.agendadoreventos.business.service.EventoService;
+import io.github.isadorabello.agendadoreventos.infrastructure.enums.StatusEventoEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -23,15 +24,31 @@ public class EventoController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<EventoDTO>> buscaEventoPorPeriodo(
+    public ResponseEntity<List<EventoDTO>> buscarEventoPorPeriodo(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dataInicial,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dataFinal){
         return ResponseEntity.ok(service.buscarEventoPorPeriodo(dataInicial, dataFinal));
     }
 
     @GetMapping
-    public ResponseEntity<List<EventoDTO>> buscaEventoPorEmail(@RequestHeader("Authorization") String token){
+    public ResponseEntity<List<EventoDTO>> buscarEventoPorEmail(@RequestHeader("Authorization") String token){
         return ResponseEntity.ok(service.buscarEventoPorEmail(token));
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deletarEventoPorId(@RequestParam("id") String id){
+        service.deletarEventoPorId(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PatchMapping
+    public ResponseEntity<EventoDTO> atualizarStatusEventoPorId(@RequestParam("id") String id, @RequestParam("status") StatusEventoEnum status){
+        return ResponseEntity.ok(service.atualizarStatusEventoPorId(status, id));
+    }
+
+    @PutMapping
+    public ResponseEntity<EventoDTO> atualizarEventoPorId(@RequestParam("id") String id, @RequestBody EventoDTO dto){
+        return ResponseEntity.ok(service.atualizarEventoPorId(dto, id));
     }
 
 }
