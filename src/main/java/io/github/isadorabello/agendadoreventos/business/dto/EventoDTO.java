@@ -5,7 +5,11 @@ import io.github.isadorabello.agendadoreventos.infrastructure.enums.StatusEvento
 
 import java.time.LocalDateTime;
 
-public record EventoDTO(String id, String titulo, String descricao, String emailUsuario, int maxParticipantes,
+public record EventoDTO(String id,
+                        String titulo,
+                        String descricao,
+                        String emailUsuario,
+                        int maxParticipantes,
                         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
                         LocalDateTime dataEvento,
                         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
